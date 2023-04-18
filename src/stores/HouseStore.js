@@ -3,7 +3,7 @@ import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
 
-const baseURL = "http://localhost:5005/api/houses";
+const baseURL = "https://real-estate-app.fly.dev/api/houses";
 
 function createAxiosInstance(store) {
   const instance = axios.create({
