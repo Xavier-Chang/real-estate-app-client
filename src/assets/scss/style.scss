@@ -1,0 +1,369 @@
+@import "config";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+
+* {
+  margin: 0;
+  transition-property: all;
+  transition-duration: 250ms;
+}
+
+
+body {
+  background-color: $background-color-1;
+}
+
+a {
+  text-decoration: none;
+  color: $text-primary-color;
+}
+
+h1 {
+  font-family: $font-family-montserrat;
+  font-weight: bold;
+  font-size: $header-1-desktop;
+  line-height: 1.2;
+  color: $text-primary-color;
+
+  @media (max-width: 479px) {
+    font-size: $header-1-mobile;
+  }
+}
+
+h2 {
+  font-family: $font-family-montserrat;
+  font-weight: bold;
+  font-size: $header-2-desktop;
+  line-height: 1.2;
+  color: $text-primary-color;
+
+  @media (max-width: 480px) {
+    font-size: $header-2-mobile;
+  }
+}
+
+button {
+  font-family: $font-family-montserrat;
+  font-size: $button-tab-desktop;
+  font-weight: bold;
+  line-height: 1.2;
+  color: $text-primary-color;
+  background-color: $primary-color;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+
+  @media (max-width: 479px) {
+    font-size: $button-tab-mobile;
+  }
+}
+
+button:hover {
+  transform: translateY(-0.125rem);
+  opacity: 0.8;
+  transition-property: all;
+  transition-duration: 500ms;
+}
+
+.input-field {
+  font-family: $font-family-open-sans;
+  font-weight: normal;
+  font-size: $input-field-desktop;
+  line-height: 1.2;
+  color: $text-secondary-color;
+  background-color: $background-color-2;
+  border: none;
+  border-radius: 4px;
+  padding: 12;
+}
+
+.desk-back-home-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 15rem;
+  padding-top: 3rem;
+  margin-bottom: 2rem;
+
+  img {
+    width: 1rem;
+    margin-right: 1rem;
+  }
+
+  p {
+    font-size: $back-button-label-desktop;
+    font-weight: 600;
+    color: $text-primary-color;
+  }
+}
+
+@media (min-width: 479px) {
+  .mobile-back-home-container {
+    display: none;
+  }
+}
+
+.icon-container {
+  display: flex;
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+
+  img {
+    margin-left: 1rem;
+    width: 1.2rem;
+  }
+
+  img:hover {
+    transform: translateY(-0.125rem);
+    cursor: pointer;
+  }
+
+  .edit-icon:active {
+    content: url("../assets/images/ic_edit_white@3x.png");
+  }
+
+  .delete-icon:active {
+    content: url("../assets/images/ic_delete_white@3x.png");
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 70rem;
+  position: relative;
+  font-family: $font-family-open-sans;
+  font-size: $input-field-title-desktop;
+  font-weight: 600;
+
+  label {
+    margin: 0.7rem 0;
+  }
+
+  input,
+  select,
+  textarea {
+    min-height: 2rem;
+    padding-left: 1rem;
+    border-radius: 0.375rem;
+    border: none;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  input::placeholder,
+  textarea::placeholder,
+  select:invalid {
+    color: $tertiary-color-dark;
+    font-size: $input-field-desktop;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  textarea {
+    min-height: 7.5rem;
+    padding-top: 1rem;
+  }
+
+  input:hover,
+  select:hover,
+  textarea:hover {
+    transform: translateY(-0.1rem);
+    transition-property: all;
+    transition-duration: 500ms;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    transform: scale(1.05);
+    transition-property: all;
+    transition-duration: 500ms;
+  }
+
+  .two-columns-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+
+    .half-size-container {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .sumbit-button {
+    margin-top: 1rem;
+    width: 50%;
+    color: white;
+    opacity: 0.5;
+    position: absolute;
+    right: 0;
+  }
+
+  #save-btn {
+    opacity: 1;
+  }
+
+  .error-message {
+    font-family: $font-family-montserrat;
+    font-size: $empty-state-message-desktop;
+    font-style: italic;
+    color: red;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .desk-back-home-container {
+    display: none;
+  }
+  .mobile-back-home-container {
+    position: absolute;
+    margin-top: 4rem;
+    margin-left: 2rem;
+    z-index: 2;
+
+    img {
+      width: 1.5rem;
+    }
+  }
+
+  .icon-container {
+    right: 1rem;
+    top: 1rem;
+
+    img {
+      margin-left: 0.6rem;
+      width: 1rem;
+    }
+  }
+
+  .house-list-container {
+    width: 90vw;
+    padding: 1rem 0rem;
+    margin: 0.7rem 0;
+
+    .house-image {
+      height: 6rem;
+      width: 6rem;
+      margin-left: 0.7rem;
+      object-fit: cover;
+      border-radius: 0.5rem;
+    }
+
+    .content-container {
+      padding-left: 1rem;
+      line-height: 1.8;
+
+      .price {
+        font-weight: 600;
+      }
+
+      p {
+        color: $text-primary-color;
+        font-family: $font-family-open-sans;
+        font-size: $body-text-mobile;
+      }
+
+      .location-container {
+        display: flex;
+
+        p {
+          color: $tertiary-color-dark;
+          margin-right: 0.5rem;
+        }
+      }
+    }
+
+    .rooms-area-container {
+      display: flex;
+      align-items: center;
+      margin-top: 0.3rem;
+
+      p {
+        font-size: $listing-information-mobile;
+        margin-right: 1rem;
+      }
+
+      img {
+        width: 1rem;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    font-size: $input-field-title-mobile;
+  
+    label {
+      margin: 0.8rem 0;
+    }
+  
+    input::placeholder,
+    textarea::placeholder,
+    select {
+      font-size: $input-field-mobile;
+    }
+  
+    textarea {
+      min-height: 5rem;
+      padding-top: 1rem;
+    }
+  
+    input:hover,
+    select:hover,
+    textarea:hover {
+      transform: translateY(-0.1rem);
+      transition-property: all;
+      transition-duration: 500ms;
+    }
+  
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      transform: scale(1.05);
+      transition-property: all;
+      transition-duration: 500ms;
+    }
+  
+    .two-columns-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+  
+      .half-size-container {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  
+    .sumbit-button {
+      margin-top: 2rem;
+      width: 90vw;
+    }
+  
+    #save-btn {
+      width: 90vw;
+    }
+  
+    .error-message {
+      font-size: $empty-state-message-mobile;
+    }
+  }
+}

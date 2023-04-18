@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+// Element colors
+$primary-color: #EB5440;
+$secondary-color: #4A4B4C;
+$tertiary-color-light: #E8E8E8;
+$tertiary-color-dark: #C3C3C3;
+$background-color-1: #F6F6F6;
+$background-color-2: #FFFFFF;
+
+// Text colors
+$text-primary-color: #000000;
+$text-secondary-color: #4A4B4C;
+$hyperlink-color: #067BC2;
+
+// Font family
+$font-family-montserrat: 'Montserrat', sans-serif;
+$font-family-open-sans: 'Open Sans', sans-serif;
+
+// Font sizes
+$header-1-desktop: 32px;
+$header-1-mobile: 18px;
+$header-2-desktop: 22px;
+$header-2-mobile: 14px;
+$desktop-header-active-menu: 18px;
+$button-tab-desktop: 18px;
+$button-tab-mobile: 12px;
+$back-button-label-desktop: 16px;
+$input-field-title-desktop: 14px;
+$input-field-title-mobile: 12px;
+$desktop-header-inactive-menu: 18px;
+$empty-state-message-desktop: 18px;
+$empty-state-message-mobile: 14px;
+$error-message-desktop: 14px;
+$error-message-mobile: 12px;
+$listing-information-desktop: 16px;
+$listing-information-mobile: 12px;
+$body-text-desktop: 18px;
+$body-text-mobile: 12px;
+$input-field-desktop: 14px;
+$input-field-mobile: 12px;
