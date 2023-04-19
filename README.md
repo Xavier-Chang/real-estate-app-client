@@ -2,7 +2,11 @@
 
 Check out the deployed version: [Real Estate App](https://xavier-real-estate-app.netlify.app/)
 
-This real estate web app allows users to view, search, create, and delete house listings. Navigation is made easy with a fixed header, while the homepage displays all available houses and allows for easy search by criteria like location and number of bedrooms and bathrooms. Users can also sort listings by their preference, such as price or size, and view details like address, description, image, and more. Listing owners can create, edit, and delete listings using a required form with error messaging for incomplete submissions. This comprehensive platform caters to both buyers and sellers.
+This real estate web app allows users to view, search, create, and delete house listings. 
+<br>The app features a responsive design, making it accessible on desktops and smartphones.
+<br>Navigation is made easy with a fixed header, while the homepage displays all available houses and allows for easy search by criteria like location and number of bedrooms and bathrooms. 
+<br>Users can also sort listings by their preference, such as price or size, and view details like address, description, image, and more. Listing owners can create, edit, and delete listings using a required form with error messaging for incomplete submissions. 
+<br>This comprehensive platform caters to both buyers and sellers.
 
 ## Backend Repository
 

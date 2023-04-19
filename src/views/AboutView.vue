@@ -6,6 +6,8 @@
     <p>
       This real estate web app allows users to view, search, create, and delete
       house listings. <br /><br />
+      The app features a responsive design, making it accessible on desktops and smartphones.
+      <br /><br />
       Navigation is made easy with a fixed header, while the homepage displays
       all available houses and allows for easy search by criteria like location
       and number of bedrooms and bathrooms. <br /><br />
