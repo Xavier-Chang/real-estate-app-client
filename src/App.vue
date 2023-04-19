@@ -1,8 +1,8 @@
 <template>
   <div class="nav">
-    <a href="https://www.d-tt.nl/en/" target="_blank">
-      <img src="./assets/images/img_logo_dtt@3x.png" alt="DTT logo" />
-    </a>
+    <RouterLink to="/">
+      <img src="./assets/images/house-logo.jpeg" alt="DTT logo" />
+    </RouterLink>
 
     <RouterLink
       to="/"
@@ -73,7 +73,7 @@
   z-index: 10;
 
   img {
-    width: 7rem;
+    width: 6rem;
   }
 
   img:hover {
