@@ -54,8 +54,8 @@ const houseStore = useHouseStore();
 const router = useRouter();
 const house = computed(() => houseStore.houses.find((house) => house._id === props.houseId));
 
-const goToHouseDetail =  (houseId) => {
-  
+const goToHouseDetail = async (houseId) => {
+  await router.push({ name: 'houseDetail', params: { id: houseId } });
   location.href = `/houses/${houseId}`;
 };
 
