@@ -19,17 +19,17 @@ The backend repository can be found at [Real Estate App Server](https://github.c
 To run the app locally, follow these steps:
 
 1. Clone the repository:
-git clone https://github.com/Xavier-Chang/Real-Estate-app.git
+<br>git clone https://github.com/Xavier-Chang/Real-Estate-app.git
 
 2. Change to the project directory:
-cd Real-Estate-app
+<br>cd Real-Estate-app
 
 3. Install dependencies:
-npm install
+<br>npm install
 
 
 4. Start the development server:
-npm run dev
+<br>npm run dev
 
 5. Open your browser and visit http://localhost:8080.
 
