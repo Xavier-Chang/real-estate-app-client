@@ -11,11 +11,24 @@
       >Houses</RouterLink
     >
     <RouterLink
+      to="/register"
+      class="nav-register"
+      :class="{ selected: $route.path === '/register' }"
+      >Register</RouterLink
+    >
+    <RouterLink
+      to="/signin"
+      class="nav-signin"
+      :class="{ selected: $route.path === '/signin' }"
+      >Signin</RouterLink
+    >
+    <RouterLink
       to="/about"
       class="nav-about"
       :class="{ selected: $route.path === '/about' }"
       >About</RouterLink
     >
+    <button @click="handleSignOut" v-if="isLoggenIn">Sign Out</button>
   </div>
 
   <div class="mobile-container">
@@ -53,6 +66,9 @@
 </template>
 
 <script setup>
+import { useHouseStore } from "./stores/HouseStore";
+
+const houseStore = useHouseStore();
 </script>
 
 <style lang='scss' scoped>
@@ -93,14 +109,17 @@
     margin-left: 3rem;
   }
 
-  &-about {
+  &-about,&-register,&-signin {
     font-size: $desktop-header-inactive-menu;
     color: $tertiary-color-dark;
     margin-left: 4rem;
   }
+  
 
   &-house:hover,
-  &-about:hover {
+  &-about:hover,
+  &-register:hover,
+  &-signin:hover {
     color: $hyperlink-color;
     transform: scale(1.02);
   }

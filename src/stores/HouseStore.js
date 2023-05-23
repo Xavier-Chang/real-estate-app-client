@@ -2,6 +2,7 @@ import { markRaw } from "vue";
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
+import { getAuth,onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 
 const baseURL = "https://real-estate-app.fly.dev/api/houses";
 
@@ -37,6 +38,10 @@ function createAxiosInstance(store) {
 
 export const useHouseStore = defineStore("houseStore", {
   state: () => ({
+    isLoggedIn: false,
+    email: "",
+    password: "",
+    username: "",
     houses: [],
     searchQuery: "",
     showDeleteDialog: false,
@@ -296,5 +301,6 @@ export const useHouseStore = defineStore("houseStore", {
       this.showUploadedImage = true;
       this.imageUrl = "";
     },
+    
   },
 });
