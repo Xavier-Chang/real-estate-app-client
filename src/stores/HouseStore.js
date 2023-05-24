@@ -239,7 +239,7 @@ export const useHouseStore = defineStore("houseStore", {
       formData.append("bathrooms", this.formData.bathrooms);
       formData.append("constructionYear", this.formData.constructionYear);
       formData.append("description", this.formData.description);
-      formData.append("madeByMe", true);
+      formData.append("madeBy", this.userEmail);
 
       try {
         const response = await instance.post(baseURL, formData, {
