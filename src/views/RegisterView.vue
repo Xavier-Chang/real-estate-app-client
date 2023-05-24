@@ -32,15 +32,7 @@ const register = () => {
 }
 
 const signInWithGoogle = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-        .then((result) => {
-            console.log(result.user)
-            router.push('/')
-        }).catch((error) => {
-            console.log(error.code) 
-            alert(error.message)
-        });
+    houseStore.signInWithGoogle(router);
 }
 </script>
 

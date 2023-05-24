@@ -2,7 +2,7 @@ import { markRaw } from "vue";
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
-import { getAuth,onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { getAuth, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 
 const baseURL = "https://real-estate-app.fly.dev/api/houses";
 
@@ -224,7 +224,7 @@ export const useHouseStore = defineStore("houseStore", {
     },
     async handleSubmit(router) {
       const instance = createAxiosInstance(this);
-    
+
       const formData = new FormData();
       formData.append("streetName", this.formData.streetName);
       formData.append("houseNumber", this.formData.houseNumber);
@@ -240,16 +240,16 @@ export const useHouseStore = defineStore("houseStore", {
       formData.append("constructionYear", this.formData.constructionYear);
       formData.append("description", this.formData.description);
       formData.append("madeByMe", true);
-    
+
       try {
         const response = await instance.post(baseURL, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         });
-    
+
         const houseId = response.data._id;
-    
+
         this.resetFromData();
         router.push(`/houses/${houseId}`);
       } catch (error) {
@@ -301,6 +301,18 @@ export const useHouseStore = defineStore("houseStore", {
       this.showUploadedImage = true;
       this.imageUrl = "";
     },
-    
+    signInWithGoogle(router) {
+      const auth = getAuth();
+      const provider = new GoogleAuthProvider();
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          console.log(result._tokenResponse.email)
+          this.email = result.user.email
+          router.push('/')
+        }).catch((error) => {
+          console.log(error.code)
+          alert(error.message)
+        })
+    }
   },
 });

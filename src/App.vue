@@ -66,9 +66,13 @@
 </template>
 
 <script setup>
+import { storeToRefs } from "pinia";
 import { useHouseStore } from "./stores/HouseStore";
 
 const houseStore = useHouseStore();
+const {email} = storeToRefs(houseStore);
+console.log(email);
+
 </script>
 
 <style lang='scss' scoped>
