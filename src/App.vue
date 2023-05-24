@@ -5,12 +5,12 @@
     </RouterLink>
 
     <RouterLink to="/" class="nav-house" :class="{ selected: $route.path !== '/about' }">Houses</RouterLink>
-    <RouterLink to="/register" class="nav-register" :class="{ selected: $route.path === '/register' }">Register
+    <RouterLink to="/register" class="nav-register" :class="{ selected: $route.path === '/register' }" v-if="!isLoggedIn">Register
     </RouterLink>
-    <RouterLink to="/signin" class="nav-signin" :class="{ selected: $route.path === '/signin' }">Signin</RouterLink>
+    <RouterLink to="/signin" class="nav-signin" :class="{ selected: $route.path === '/signin' }" v-if="!isLoggedIn">Signin</RouterLink>
     <RouterLink to="/about" class="nav-about" :class="{ selected: $route.path === '/about' }">About</RouterLink>
     <button @click="handleSignOut" v-if="isLoggedIn">Sign Out</button>
-    <p v-if="showEmail">Welcome: {{ showEmail }}</p>
+    <p v-if="userEmail">Welcome: {{ userEmail }}</p>
   </div>
 
   <div class="mobile-container">
@@ -39,7 +39,7 @@ import { onMounted } from "vue";
 import router from "./router";
 
 const houseStore = useHouseStore();
-const { showEmail, isLoggedIn } = storeToRefs(houseStore);
+const { userEmail, isLoggedIn } = storeToRefs(houseStore);
 
 
 const auth = getAuth();
@@ -47,7 +47,7 @@ onMounted(() => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       // User is signed in.
-      showEmail.value = user.email;
+      userEmail.value = user.email;
       isLoggedIn.value = true;
     } else {
       // No user is signed in.
@@ -58,7 +58,7 @@ onMounted(() => {
 
 const handleSignOut = () => {
   signOut(auth).then(() => {
-    showEmail.value = '';
+    userEmail.value = '';
     router.push('/')
   })
 }

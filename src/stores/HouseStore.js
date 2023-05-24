@@ -40,7 +40,7 @@ export const useHouseStore = defineStore("houseStore", {
   state: () => ({
     isLoggedIn: false,
     email: "",
-    showEmail: "",
+    userEmail: "",
     password: "",
     houses: [],
     searchQuery: "",
@@ -308,7 +308,7 @@ export const useHouseStore = defineStore("houseStore", {
         .then((result) => {
           this.isLoggedIn = true;
           this.email = result._tokenResponse.email
-          this.showEmail = result._tokenResponse.email
+          this.userEmail = result._tokenResponse.email
           console.log(this.email)
           router.push('/')
         }).catch((error) => {

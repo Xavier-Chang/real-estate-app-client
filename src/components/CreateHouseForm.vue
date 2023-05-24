@@ -202,7 +202,7 @@ import { storeToRefs } from "pinia";
 const houseStore = useHouseStore();
 const router = useRouter();
 
-const { formData, submittingForm, imageUrl } = storeToRefs(houseStore);
+const { formData, submittingForm, imageUrl, userEmail } = storeToRefs(houseStore);
 
 const formSubmitted = ref(false);
 
