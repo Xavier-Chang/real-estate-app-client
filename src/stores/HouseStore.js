@@ -40,8 +40,8 @@ export const useHouseStore = defineStore("houseStore", {
   state: () => ({
     isLoggedIn: false,
     email: "",
+    showEmail: "",
     password: "",
-    username: "",
     houses: [],
     searchQuery: "",
     showDeleteDialog: false,
@@ -306,8 +306,10 @@ export const useHouseStore = defineStore("houseStore", {
       const provider = new GoogleAuthProvider();
       signInWithPopup(auth, provider)
         .then((result) => {
-          console.log(result._tokenResponse.email)
-          this.email = result.user.email
+          this.isLoggedIn = true;
+          this.email = result._tokenResponse.email
+          this.showEmail = result._tokenResponse.email
+          console.log(this.email)
           router.push('/')
         }).catch((error) => {
           console.log(error.code)

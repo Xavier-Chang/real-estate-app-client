@@ -4,59 +4,25 @@
       <img src="./assets/images/house-logo.jpeg" alt="DTT logo" />
     </RouterLink>
 
-    <RouterLink
-      to="/"
-      class="nav-house"
-      :class="{ selected: $route.path !== '/about' }"
-      >Houses</RouterLink
-    >
-    <RouterLink
-      to="/register"
-      class="nav-register"
-      :class="{ selected: $route.path === '/register' }"
-      >Register</RouterLink
-    >
-    <RouterLink
-      to="/signin"
-      class="nav-signin"
-      :class="{ selected: $route.path === '/signin' }"
-      >Signin</RouterLink
-    >
-    <RouterLink
-      to="/about"
-      class="nav-about"
-      :class="{ selected: $route.path === '/about' }"
-      >About</RouterLink
-    >
-    <button @click="handleSignOut" v-if="isLoggenIn">Sign Out</button>
+    <RouterLink to="/" class="nav-house" :class="{ selected: $route.path !== '/about' }">Houses</RouterLink>
+    <RouterLink to="/register" class="nav-register" :class="{ selected: $route.path === '/register' }">Register
+    </RouterLink>
+    <RouterLink to="/signin" class="nav-signin" :class="{ selected: $route.path === '/signin' }">Signin</RouterLink>
+    <RouterLink to="/about" class="nav-about" :class="{ selected: $route.path === '/about' }">About</RouterLink>
+    <button @click="handleSignOut" v-if="isLoggedIn">Sign Out</button>
+    <p v-if="showEmail">Welcome: {{ showEmail }}</p>
   </div>
 
   <div class="mobile-container">
     <div class="mobile-nav">
       <div class="image-container">
-        <RouterLink
-          to="/"
-          class="nav-house"
-          :class="{ selected: $route.path !== '/about' }"
-        >
-          <img
-            src="../src/assets/images/ic_mobile_navigarion_home_active@3x.png"
-            class="house-logo"
-            alt="house logo"
-          />
+        <RouterLink to="/" class="nav-house" :class="{ selected: $route.path !== '/about' }">
+          <img src="../src/assets/images/ic_mobile_navigarion_home_active@3x.png" class="house-logo" alt="house logo" />
         </RouterLink>
       </div>
       <div class="image-container">
-        <RouterLink
-          to="/about"
-          class="nav-about"
-          :class="{ selected: $route.path === '/about' }"
-        >
-          <img
-            src="../src/assets/images/ic_mobile_navigarion_info@3x.png"
-            class="info-logo"
-            alt="info logo"
-          />
+        <RouterLink to="/about" class="nav-about" :class="{ selected: $route.path === '/about' }">
+          <img src="../src/assets/images/ic_mobile_navigarion_info@3x.png" class="info-logo" alt="info logo" />
         </RouterLink>
       </div>
     </div>
@@ -68,10 +34,34 @@
 <script setup>
 import { storeToRefs } from "pinia";
 import { useHouseStore } from "./stores/HouseStore";
+import { getAuth, onAuthStateChanged, signOut } from "@firebase/auth";
+import { onMounted } from "vue";
+import router from "./router";
 
 const houseStore = useHouseStore();
-const {email} = storeToRefs(houseStore);
-console.log(email);
+const { showEmail, isLoggedIn } = storeToRefs(houseStore);
+
+
+const auth = getAuth();
+onMounted(() => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in.
+      showEmail.value = user.email;
+      isLoggedIn.value = true;
+    } else {
+      // No user is signed in.
+      isLoggedIn.value = false;
+    }
+  })
+})
+
+const handleSignOut = () => {
+  signOut(auth).then(() => {
+    showEmail.value = '';
+    router.push('/')
+  })
+}
 
 </script>
 
@@ -82,6 +72,7 @@ console.log(email);
   @media (max-width: 480px) {
     display: none;
   }
+
   display: flex;
   position: fixed;
   width: 100%;
@@ -113,12 +104,14 @@ console.log(email);
     margin-left: 3rem;
   }
 
-  &-about,&-register,&-signin {
+  &-about,
+  &-register,
+  &-signin {
     font-size: $desktop-header-inactive-menu;
     color: $tertiary-color-dark;
     margin-left: 4rem;
   }
-  
+
 
   &-house:hover,
   &-about:hover,
@@ -127,6 +120,7 @@ console.log(email);
     color: $hyperlink-color;
     transform: scale(1.02);
   }
+
 }
 
 .mobile-container {

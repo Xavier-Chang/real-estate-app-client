@@ -17,7 +17,7 @@ import { useRouter } from 'vue-router';
 import { useHouseStore } from "../stores/HouseStore";
 import { storeToRefs } from 'pinia';
 const houseStore = useHouseStore();
-const { email, password, username } = storeToRefs(houseStore);
+const { email, password, isLoggedIn } = storeToRefs(houseStore);
 
 const errMsg = ref();
 const router = useRouter();
@@ -26,8 +26,8 @@ const auth = getAuth();
 const register = () => {
     signInWithEmailAndPassword(auth, email.value, password.value)
         .then((data) => {
-            console.log("Success signed in")
-            console.log(auth.currentUser)
+            isLoggedIn.value = true;
+            console.log(email._object.email)
             router.push('/')
         })
         .catch((error) => {
