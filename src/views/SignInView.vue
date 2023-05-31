@@ -1,11 +1,11 @@
 <template>
-    <div class="container">
+    <div class="authentication-container">
         <h1>Sign in to an Account</h1>
-        <p><input type="text" placeholder="Email" v-model="email" /></p>
-        <p><input type="password" placeholder="Password" v-model="password"></p>
+        <input type="text" placeholder="Email" v-model="email" class="input-container"/>
+        <input type="password" placeholder="Password" v-model="password" class="input-container"/>
         <p v-if="errMsg">{{ errMsg }}</p>
-        <p><button @click="register">Submit</button></p>
-        <p><button @click="signInWithGoogle">Sign In With Google</button></p>
+        <button @click="register">Submit</button>
+        <button @click="signInWithGoogle">Sign In With Google</button>
         
     </div>
 </template>
@@ -66,5 +66,9 @@ const signInWithGoogle = () => {
     justify-content: center;
     height: 100vh;
     gap: 1rem;
+
+    button {
+        color: white;
+    }
 }
 </style>

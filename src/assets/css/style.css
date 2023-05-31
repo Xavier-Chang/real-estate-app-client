@@ -205,6 +205,37 @@ form .error-message {
   margin-top: 1rem;
 }
 
+.authentication-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 2rem;
+}
+
+.authentication-container button {
+  color: white;
+}
+
+.authentication-container .input-container {
+  background-color: $tertiary-color-light;
+  border: none;
+  border-radius: 0.375rem;
+  height: 2.5rem;
+  width: 20vw;
+  padding-left: 2rem;
+}
+
+.authentication-container   .input-container::placeholder {
+    color: $tertiary-color-dark;
+}
+
+.authentication-container  .input-container:focus {
+    outline: none;
+}
+
+
 @media (max-width: 479px) {
   .desk-back-home-container {
     display: none;

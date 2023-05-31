@@ -4,10 +4,14 @@
       <img src="./assets/images/house-logo.jpeg" alt="DTT logo" />
     </RouterLink>
 
-    <RouterLink to="/" class="nav-house" :class="{ selected: $route.path !== '/about' }">Houses</RouterLink>
-    <RouterLink to="/register" class="nav-register" :class="{ selected: $route.path === '/register' }" v-if="!isLoggedIn">Register
+    <RouterLink to="/" class="nav-house"
+      :class="{ selected: $route.path !== '/about' && $route.path !== '/register' && $route.path !== '/signin' }">Houses
     </RouterLink>
-    <RouterLink to="/signin" class="nav-signin" :class="{ selected: $route.path === '/signin' }" v-if="!isLoggedIn">Signin</RouterLink>
+    <RouterLink to="/register" class="nav-register" :class="{ selected: $route.path === '/register' }" v-if="!isLoggedIn">
+      Register
+    </RouterLink>
+    <RouterLink to="/signin" class="nav-signin" :class="{ selected: $route.path === '/signin' }" v-if="!isLoggedIn">Signin
+    </RouterLink>
     <RouterLink to="/about" class="nav-about" :class="{ selected: $route.path === '/about' }">About</RouterLink>
     <button @click="handleSignOut" v-if="isLoggedIn">Sign Out</button>
     <p v-if="userEmail">Welcome: {{ userEmail }}</p>
@@ -148,5 +152,4 @@ const handleSignOut = () => {
       }
     }
   }
-}
-</style>
+}</style>
