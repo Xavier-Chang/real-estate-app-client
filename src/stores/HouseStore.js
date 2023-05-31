@@ -49,6 +49,7 @@ export const useHouseStore = defineStore("houseStore", {
     imageUrl: null,
     showUploadedImage: true,
     imageUploaded: true,
+    errMsg: "",
     formData: {
       streetName: "",
       houseNumber: "",

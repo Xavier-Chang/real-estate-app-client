@@ -211,11 +211,16 @@ form .error-message {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  gap: 2rem;
+  /* gap: 2rem; */
+}
+
+.authentication-container h1 {
+  margin-bottom: 1rem;
 }
 
 .authentication-container button {
   color: white;
+  margin-top: 1rem;
 }
 
 .authentication-container .input-container {
@@ -225,14 +230,23 @@ form .error-message {
   height: 2.5rem;
   width: 20vw;
   padding-left: 2rem;
+  margin-top: 1rem;
 }
 
-.authentication-container   .input-container::placeholder {
+.authentication-container .input-container::placeholder {
     color: $tertiary-color-dark;
 }
 
-.authentication-container  .input-container:focus {
+.authentication-container .input-container:focus {
     outline: none;
+}
+
+.authentication-container .error-message {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-style: italic;
+  color: red;
+  margin-top: 1rem;
 }
 
 

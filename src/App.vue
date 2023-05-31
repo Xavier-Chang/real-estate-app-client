@@ -14,7 +14,7 @@
     </RouterLink>
     <RouterLink to="/about" class="nav-about" :class="{ selected: $route.path === '/about' }">About</RouterLink>
     <button @click="handleSignOut" v-if="isLoggedIn">Sign Out</button>
-    <p v-if="userEmail">Welcome: {{ userEmail }}</p>
+    <p v-if="userEmail"><strong>Welcome:</strong>  {{ userEmail }}</p>
   </div>
 
   <div class="mobile-container">
@@ -73,6 +73,21 @@ const handleSignOut = () => {
 @import "./assets/scss/style.scss";
 
 .nav {
+  position: relative;
+
+  p {
+    font-family: "Montserrat", sans-serif;
+    position:fixed;
+    right: 25rem;
+    color: $text-primary-color;
+  }
+
+  button {
+    color: white;
+    position: fixed;
+    right: 12.5rem;
+  }
+
   @media (max-width: 480px) {
     display: none;
   }
