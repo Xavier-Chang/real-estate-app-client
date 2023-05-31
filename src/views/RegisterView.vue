@@ -21,44 +21,46 @@ const { email, password, errMsg } = storeToRefs(houseStore);
 const router = useRouter();
 
 router.beforeEach((to, from, next) => {
-  houseStore.errMsg = ""; 
-  next();
+    errMsg.value = "";
+    email.value = "";
+    password.value = "";
+    next();
 })
 
 const auth = getAuth();
 
 const validateEmail = (email) => {
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-  if (!emailRegex.test(email)) {
-    return 'Please enter a valid email address.';
-  }
+    if (!emailRegex.test(email)) {
+        return 'Please enter a valid email address.';
+    }
 
-  return true;
+    return true;
 }
 
 const validatePassword = (password) => {
-  if (password.length < 8) {
-    return 'Password must be at least 8 characters.';
-  }
-  
-  if (!/[a-z]/.test(password)) {
-    return 'Password must contain at least one lowercase letter.';
-  }
-  
-  if (!/[A-Z]/.test(password)) {
-    return 'Password must contain at least one uppercase letter.';
-  }
+    if (password.length < 8) {
+        return 'Password must be at least 8 characters.';
+    }
 
-  if (!/\d/.test(password)) {
-    return 'Password must contain at least one digit.';
-  }
+    if (!/[a-z]/.test(password)) {
+        return 'Password must contain at least one lowercase letter.';
+    }
 
-  if (!/[!@#$%^&*]/.test(password)) {
-    return 'Password must contain at least one special character (!@#$%^&*).';
-  }
+    if (!/[A-Z]/.test(password)) {
+        return 'Password must contain at least one uppercase letter.';
+    }
 
-  return true;
+    if (!/\d/.test(password)) {
+        return 'Password must contain at least one digit.';
+    }
+
+    if (!/[!@#$%^&*]/.test(password)) {
+        return 'Password must contain at least one special character (!@#$%^&*).';
+    }
+
+    return true;
 }
 
 
@@ -83,7 +85,7 @@ const register = () => {
             router.push('/signin')
         })
         .catch((error) => {
-            console.log(error.code) 
+            console.log(error.code)
             alert(error.message)
         });
 }
@@ -93,5 +95,4 @@ const signInWithGoogle = () => {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
