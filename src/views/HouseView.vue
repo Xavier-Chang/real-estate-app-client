@@ -138,7 +138,7 @@ const sortByMyList = () => {
   myListSelected.value = true;
   myListDescending.value = !myListDescending.value;
 
-  if (myListDescending.value) {
+  if (!myListDescending.value) {
     return houseStore.houses.sort((a, b) => a.madeBy.localeCompare(b.madeBy));
   } else {
     return houseStore.houses.sort((a, b) => b.madeBy.localeCompare(a.madeBy));
