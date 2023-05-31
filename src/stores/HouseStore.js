@@ -307,9 +307,7 @@ export const useHouseStore = defineStore("houseStore", {
       signInWithPopup(auth, provider)
         .then((result) => {
           this.isLoggedIn = true;
-          this.email = result._tokenResponse.email
           this.userEmail = result._tokenResponse.email
-          console.log(this.email)
           router.push('/')
         }).catch((error) => {
           console.log(error.code)

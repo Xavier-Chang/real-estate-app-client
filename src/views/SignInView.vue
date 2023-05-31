@@ -27,7 +27,8 @@ const register = () => {
     signInWithEmailAndPassword(auth, email.value, password.value)
         .then((data) => {
             isLoggedIn.value = true;
-            console.log(email._object.email)
+            houseStore.email = "";
+            houseStore.password = "";
             router.push('/')
         })
         .catch((error) => {

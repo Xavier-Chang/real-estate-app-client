@@ -19,7 +19,7 @@
       </div>
     </RouterLink>
 
-    <div v-if="house.madeByMe" class="mobile-icon-container">
+    <div v-if="house.madeBy === userEmail" class="mobile-icon-container">
       <RouterLink :to="`/houses/${house._id}/edit`">
         <img
           class="edit-icon"
@@ -72,7 +72,7 @@
 
         <p>{{ house.description }}</p>
 
-        <div v-if="house.madeByMe" class="icon-container">
+        <div v-if="house.madeBy === userEmail" class="icon-container">
           <RouterLink :to="`/houses/${house._id}/edit`">
             <img
               class="edit-icon"
@@ -108,7 +108,7 @@ const houseStore = useHouseStore();
 const route = useRoute();
 const router = useRouter();
 
-const { showDeleteDialog } = storeToRefs(houseStore);
+const { showDeleteDialog, userEmail } = storeToRefs(houseStore);
 
 const houseId = (route.params.id);
 // console.log(typeof houseId)

@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div v-if="house.madeByMe" class="icon-container">
+    <div v-if="house.madeBy === userEmail" class="icon-container">
         <img
           class="edit-icon"
           src="../assets/images/ic_edit@3x.png"
@@ -47,6 +47,8 @@ const props = defineProps({
 });
 
 const houseStore = useHouseStore();
+const {userEmail} = storeToRefs(houseStore);
+
 const router = useRouter();
 
 const navigateToHouse = () => {

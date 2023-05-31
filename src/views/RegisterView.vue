@@ -23,6 +23,8 @@ const auth = getAuth();
 const register = () => {
     createUserWithEmailAndPassword(auth, email.value, password.value)
         .then((data) => {
+            houseStore.email = "";
+            houseStore.password = "";
             router.push('/signin')
         })
         .catch((error) => {
